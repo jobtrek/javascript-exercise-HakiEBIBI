@@ -22,9 +22,47 @@ jobs:
         command: npm run test run conditions
         timeout: 10
         max-score: 4
+    - name: Test strings
+      id: test-strings
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test strings
+        setup-command: npm install
+        command: npm run test run strings
+        timeout: 10
+        max-score: 4
+    - name: Test maths
+      id: test-maths
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test maths
+        setup-command: npm install
+        command: npm run test run maths
+        timeout: 10
+        max-score: 4
+    - name: Test arrays
+      id: test-arrays
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test arrays
+        setup-command: npm install
+        command: npm run test run arrays
+        timeout: 10
+    - name: Test objects
+      id: test-objects
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test objects
+        setup-command: npm install
+        command: npm run test run objects
+        timeout: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         TEST-CONDITIONS_RESULTS: "${{steps.test-conditions.outputs.result}}"
+        TEST-STRINGS_RESULTS: "${{steps.test-strings.outputs.result}}"
+        TEST-MATHS_RESULTS: "${{steps.test-maths.outputs.result}}"
+        TEST-ARRAYS_RESULTS: "${{steps.test-arrays.outputs.result}}"
+        TEST-OBJECTS_RESULTS: "${{steps.test-objects.outputs.result}}"
       with:
-        runners: test-conditions
+        runners: test-conditions,test-strings,test-maths,test-arrays,test-objects
