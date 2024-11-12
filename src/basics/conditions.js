@@ -18,11 +18,7 @@ export function isBiggerThan2(n) {
     throw new Error("Passed value is not a number");
 }
 
-  if (n > 2) {
-    return true 
-  } else {
-    return false
-  }
+  return n > 2
 }
 
 /**
@@ -37,10 +33,6 @@ export function isMult(n, m) {
   throw new Error("Passed m is not a number")
 }
 
-if (m % n && n % m === 0) {
-  return true
-} else {
-  return false
-}
+return m % n && n % m === 0
 
 }
