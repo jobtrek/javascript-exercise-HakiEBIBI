@@ -14,9 +14,9 @@
  */
 export function isBiggerThan2(n) {
 
-  if(isNaN(n)){
+  if (isNaN(n)) {
     throw new Error("Passed value is not a number");
-}
+  }
 
   return n > 2
 }
@@ -27,12 +27,12 @@ export function isBiggerThan2(n) {
  * @return {boolean} true if m is a multiple of n
  */
 export function isMult(n, m) {
-  if(isNaN(n)){
+  if (isNaN(n)) {
     throw new Error("Passed n is not a number")
-} else if (isNaN(m)){
-  throw new Error("Passed m is not a number")
-}
+  } else if (isNaN(m)) {
+    throw new Error("Passed m is not a number")
+  }
 
-return m % n && n % m === 0
+  return m % n && n % m === 0
 
 }

@@ -12,9 +12,9 @@ export function findAndReplacePreservingCase(needle, haystack, newWord) {
   }
 
   return haystack.replaceAll(new RegExp(needle, 'gi'), (match) => {
-    
+
     let result = '';
-  
+
 
     for (let i = 0; i < match.length; i++) {
 
