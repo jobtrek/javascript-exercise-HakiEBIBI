@@ -9,6 +9,8 @@
  */
 export function getElementFromDomAndChangeColorToRed() {
   // Write your code here
+    const redcolor = document.querySelector("#change-my-color").style.color = "red"
+    return redcolor
 }
 
 /**
@@ -17,6 +19,17 @@ export function getElementFromDomAndChangeColorToRed() {
  */
 export function addElementsInDOM() {
   // Write your code here
+  const elem = document.createElement("p")
+  const txt = document.createTextNode("Bonjour")
+  elem.appendChild(txt)
+  const element = document.getElementById("add-your-elements-in-this-element")
+  element.appendChild(elem)
+
+  const lm = document.createElement("p")
+  const text = document.createTextNode("Toto")
+  lm.appendChild(text)
+  const elment = document.getElementById("add-your-elements-in-this-element")
+  elment.appendChild(lm)
 }
 
 /**
@@ -27,4 +40,13 @@ export function addElementsInDOM() {
  */
 export function addAListInDomFromAnArrayOfObjects(listElements) {
   // Write your code here
+  const addlist = document.getElementById("add-list-here")
+  const ul = document.createElement("ul")
+  listElements.forEach(item => {
+    const li = document.createElement("li")
+    li.textContent = item.name
+    li.style.backgroundColor = item.color
+    ul.appendChild(li)
+  })
+  addlist.appendChild(ul)
 }
