@@ -4,8 +4,28 @@
  * @param {string} needle
  * @param {string} haystack
  * @param {string} newWord
- * @return {string} true if n is bigger than 2
+ * @return {string} the resulting string, with all needle words transformed to newWord
  */
 export function findAndReplacePreservingCase(needle, haystack, newWord) {
-  // Write your code here
+  if (typeof newWord !== 'string' || typeof needle !== 'string') {
+    throw new Error("not a string");
+  }
+
+  return haystack.replaceAll(new RegExp(needle, 'gi'), (match) => {
+
+    let result = '';
+
+
+    for (let i = 0; i < match.length; i++) {
+
+      const newChar = newWord[i] || ''
+      if (match[i] === match[i].toUpperCase()) {
+        result += newChar.toUpperCase()
+      } else {
+        result += newChar.toLowerCase()
+      }
+    }
+
+    return result;
+  });
 }
