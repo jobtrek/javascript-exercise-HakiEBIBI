@@ -11,6 +11,11 @@
  */
 export function crateUserObject() {
   // Write your code here
+  var user = {
+    first_name: "Toto",
+    last_name: "Tutu",
+  }
+  return user
 }
 
 /**
@@ -20,6 +25,8 @@ export function crateUserObject() {
  */
 export function accessPropertiesInObjects(object) {
   // Write your code here
+  return object.first_name + ' ' + object.last_name
+
 }
 
 /**
@@ -31,7 +38,20 @@ export function accessPropertiesInObjects(object) {
  */
 export function iteratesThroughObjectValuesAndProperties(object) {
   // Write your code here
+  let propreties = Object.getOwnPropertyNames(object)
+ 
+  const keys = []
+  const values = []
+  
+  for (let proprety of propreties) {
+    keys.push(proprety.toUpperCase());
+    values.push(object[proprety].toLowerCase());
+  }
+ 
+  return { keys, values }
 }
+
+
 
 /**
  * Return the name of the first younger and last older user in the array
@@ -40,6 +60,26 @@ export function iteratesThroughObjectValuesAndProperties(object) {
  */
 export function retrieveMaximumMinimumUserAges(users) {
   // Write your code here
+  if (!users || users.length === 0) {
+    return { younger: '', older: '' };
+  }
+
+  let younger = users[0];
+  let older = users[0];
+
+  for (let i = 1; i < users.length; i++) {
+    if (users[i].age < younger.age || (users[i].age === younger.age && i < users.indexOf(younger))) {
+      younger = users[i];
+    }
+    if (users[i].age >= older.age) {
+      older = users[i];
+    }
+  }
+
+  return {
+    younger: younger.name,
+    older: older.name
+  };
 }
 
 /**
@@ -50,6 +90,8 @@ export function retrieveMaximumMinimumUserAges(users) {
  */
 export function parseJavaScriptObjectNotation(string) {
   // Write your code here
+  const json = JSON.parse(string)
+  return json
 }
 
 /**
@@ -58,4 +100,6 @@ export function parseJavaScriptObjectNotation(string) {
  */
 export function stringifyJavaScriptObjectNotation(object) {
   // Write your code here
+  const json = JSON.stringify(object)
+  return json
 }
