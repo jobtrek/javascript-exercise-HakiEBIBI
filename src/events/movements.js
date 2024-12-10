@@ -40,15 +40,15 @@ export function hoverFocusAndBlur() {
     const initialColor = window.getComputedStyle(focus).getPropertyValue('border-color');
     const usedColors = new Set([initialColor]);
 
-    focus.addEventListener('mouseover', function() {
+    focus.addEventListener('mouseover', function () {
         label.textContent = "Yes, you hover me !";
     });
 
-    focus.addEventListener('mouseout', function() {
+    focus.addEventListener('mouseout', function () {
         label.textContent = originalLabelText;
     });
 
-    focus.addEventListener('focus', function() {
+    focus.addEventListener('focus', function () {
         let newColor;
         do {
             newColor = randomRGB();
@@ -57,7 +57,7 @@ export function hoverFocusAndBlur() {
         this.style.borderColor = newColor;
     });
 
-    focus.addEventListener('blur', function() {
+    focus.addEventListener('blur', function () {
         this.style.borderColor = initialColor;
     });
 }
@@ -77,7 +77,7 @@ export function changesOnInputEvents() {
     const label2 = input.nextElementSibling;
     const initialColor = window.getComputedStyle(input).getPropertyValue('border-color');
 
-    input.addEventListener("input", function() {
+    input.addEventListener("input", function () {
         const newColor = randomRGB();
         input.style.setProperty('--default-border-color', newColor);
         label1.style.color = newColor;
@@ -86,7 +86,7 @@ export function changesOnInputEvents() {
 
     input.style.setProperty('--default-border-color', initialColor);
 
-    input.addEventListener('blur', function() {
+    input.addEventListener('blur', function () {
         this.style.borderColor = getComputedStyle(this).getPropertyValue('--default-border-color');
     });
 }
